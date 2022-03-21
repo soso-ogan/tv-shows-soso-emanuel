@@ -1,4 +1,5 @@
 import episodes from "../data/episodes.json";
+import {episodeCode} from "../utils/episodeCode";
 
 function Main(): JSX.Element {
   const tvShowData = [...episodes];
@@ -6,16 +7,21 @@ function Main(): JSX.Element {
   console.log(tvShowData);
 
   return (
-    <>
-      <ul>
-        {tvShowData.map((obj, id) => (
-          <li key={id}>
-            {obj.name}
-            {obj.season}
-          </li>
-        ))}
-      </ul>
-    </>
+<>
+    <div className='episodeList'>
+    {tvShowData.map((obj, id) => (
+        <div className = 'eachEpisode' key={id}>
+        {obj.name}
+            <span> </span> <span>-</span> <span> </span>
+                {episodeCode(obj)}
+                    <p>
+                        <img src={obj.image.medium} alt =''/>
+                    </p>
+        </div>
+    ))}
+    </div>
+    <p>Put licensing here</p>
+</>
   );
 }
 
