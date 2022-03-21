@@ -1,3 +1,25 @@
-.eachEpisode {
+.Main {
+    background-color: gainsboro;
+}
+
+.episodeList {
+    padding: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+}
+
+
+.episode {
     text-align: center;
+    margin: 10px;
+    
+}
+
+.episodeTitle {
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 5px;
+
 }
