@@ -8,18 +8,20 @@
     flex-direction: row;
     flex-wrap: wrap;
     
-    
-    
 }
 
 
 .episode {
-    text-align: center;
+    
     margin: 10px;
     background-color: white;
-    padding: 0px 10px 10px 10px;
+    padding: 0px 15px 15px 15px;
     border-radius: 8px;
-
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: stretch;
+    flex-wrap: nowrap;
     
 }
 
@@ -35,4 +37,5 @@
 .summary{
     overflow-wrap: break-word;
     max-width: fit-content;
+    text-align: left;
 }
