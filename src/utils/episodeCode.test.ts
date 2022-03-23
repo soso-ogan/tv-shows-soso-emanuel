@@ -54,5 +54,5 @@ test("episodeCode returns an episodecode from ", () => {
         },
       },
     })
-  ).toBe(`S06E10`);
+  ).toStrictEqual(`S06E10`);
 });

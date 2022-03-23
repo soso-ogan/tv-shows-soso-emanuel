@@ -1,25 +1,32 @@
 import episodes from "../data/episodes.json";
 import { episodeCode } from "../utils/episodeCode";
+import { isSearchTerminEpOrSum } from "../utils/isSearchTerminEpOrSum";
+import React, { useState } from 'react';
 
 function Main(): JSX.Element {
   const tvShowData = [...episodes];
-
-  console.log(tvShowData);
+  const [searchTerm, setSearchTerm] = useState('')
+  const filteredTvShowData =  isSearchTerminEpOrSum(tvShowData,searchTerm)
 
   return (
     <>
       <div className="Main">
+      <input
+        placeholder="Type your search"
+        value={searchTerm}
+        onChange={(e)=> setSearchTerm(e.target.value) }
+      />
         <div className="episodeList">
-          {tvShowData.map((obj, id) => (
+          {filteredTvShowData.map((obj, id) => (
             <div className="episode" key={id}>
-              <h3 className="episodeTitle">
+              <div><h3 className="episodeTitle">
                 {obj.name}
                 <span> </span> <span>-</span> <span> </span>
                 {episodeCode(obj)}
-              </h3>
+              </h3></div>
               <img src={obj.image.medium} alt="" />
               <p className="summary">
-                {obj.summary.slice(3, obj.summary.length - 4)}
+                {obj.summary.replace(/(<([^>]+)>)/ig, "")}
               </p>
             </div>
           ))}
