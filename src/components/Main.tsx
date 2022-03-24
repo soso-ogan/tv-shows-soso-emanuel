@@ -1,14 +1,25 @@
-import episodes from "../data/episodes.json";
+import { IEpisode } from "../propsTypes/types";
 import { episodeCode } from "../utils/episodeCode";
 import { isSearchTerminEpOrSum } from "../utils/isSearchTerminEpOrSum";
 import { removeHtmlTags } from "../utils/removeHtmlTags";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 function Main(): JSX.Element {
-  const tvShowData = [...episodes];
+  const [data, setData] = useState<IEpisode[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const filteredTvShowData = isSearchTerminEpOrSum(tvShowData, searchTerm);
 
+  useEffect(() => {
+    const fetchEpisodeList = async () => {
+      const response = await fetch("https://api.tvmaze.com/shows/82/episodes");
+      const jsonBody: IEpisode[] = await response.json();
+      setData(jsonBody);
+    };
+
+    fetchEpisodeList();
+  }, []);
+
+  const tvShowData = [...data];
+  const filteredTvShowData = isSearchTerminEpOrSum(tvShowData, searchTerm);
   return (
     <>
       <div className="Main">
