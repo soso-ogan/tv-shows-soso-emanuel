@@ -1,14 +1,16 @@
 import episodes from "../data/episodes.json";
 import { episodeCode } from "../utils/episodeCode";
 import { isSearchTerminEpOrSum } from "../utils/isSearchTerminEpOrSum";
+import { removeHtmlTags } from "../utils/removeHtmlTags";
 import React, { useState } from "react";
 
 function Main(): JSX.Element {
+
   const tvShowData = [...episodes];
   const [searchTerm, setSearchTerm] = useState("");
-  const filteredTvShowData = isSearchTerminEpOrSum(tvShowData, searchTerm);
+  const filteredTvShowData = isSearchTerminEpOrSum(tvShowData , searchTerm);
 
-  return (
+    return (
     <>
       <div className="Main">
         <input
@@ -16,6 +18,7 @@ function Main(): JSX.Element {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
+        Displaying {filteredTvShowData.length} out of {tvShowData.length}
         <div className="episodeList">
           {filteredTvShowData.map((obj, id) => (
             <div className="episode" key={id}>
@@ -26,10 +29,9 @@ function Main(): JSX.Element {
                   {episodeCode(obj)}
                 </h3>
               </div>
-              <img src={obj.image.medium} alt="" />
-              <p className="summary">
-                {obj.summary.replace(/(<([^>]+)>)/gi, "")}
-              </p>
+              {obj.image && <img className = "image" src={obj.image.medium} alt="" />}
+              {obj.image === null && <i>Image Unavailable</i>}
+              <p className="summary">{removeHtmlTags(obj)}</p>
             </div>
           ))}
         </div>
