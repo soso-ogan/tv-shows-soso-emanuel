@@ -33,6 +33,9 @@
     margin-top: 0;
    
 }
+.image {
+    margin: 1px;
+} 
 
 .summary{
     overflow-wrap: break-word;

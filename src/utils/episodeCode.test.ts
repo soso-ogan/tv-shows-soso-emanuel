@@ -27,7 +27,7 @@ test("episodeCode returns an episodecode from ", () => {
         },
       },
     })
-  ).toBe(`S01E01`);
+  ).toStrictEqual(`S01E01`);
   expect(
     episodeCode({
       id: 729575,

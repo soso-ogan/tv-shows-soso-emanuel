@@ -9,7 +9,7 @@ export interface IEpisode {
   airtime: string;
   airstamp: string;
   runtime: number;
-  image: {
+  image: null | {
     medium: string;
     original: string;
   };
