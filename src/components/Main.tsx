@@ -5,12 +5,11 @@ import { removeHtmlTags } from "../utils/removeHtmlTags";
 import React, { useState } from "react";
 
 function Main(): JSX.Element {
-
   const tvShowData = [...episodes];
   const [searchTerm, setSearchTerm] = useState("");
-  const filteredTvShowData = isSearchTerminEpOrSum(tvShowData , searchTerm);
+  const filteredTvShowData = isSearchTerminEpOrSum(tvShowData, searchTerm);
 
-    return (
+  return (
     <>
       <div className="Main">
         <input
@@ -29,7 +28,9 @@ function Main(): JSX.Element {
                   {episodeCode(obj)}
                 </h3>
               </div>
-              {obj.image && <img className = "image" src={obj.image.medium} alt="" />}
+              {obj.image && (
+                <img className="image" src={obj.image.medium} alt="" />
+              )}
               {obj.image === null && <i>Image Unavailable</i>}
               <p className="summary">{removeHtmlTags(obj)}</p>
             </div>
