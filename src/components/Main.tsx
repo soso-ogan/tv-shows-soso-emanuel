@@ -9,7 +9,9 @@ function Main(): JSX.Element {
   const [id, setID] = useState(496);
   useEffect(() => {
     const fetchEpisodeList = async () => {
-      const response = await fetch(`https://api.tvmaze.com/shows/${id}/episodes`);
+      const response = await fetch(
+        `https://api.tvmaze.com/shows/${id}/episodes`
+      );
       const jsonBody: IEpisode[] = await response.json();
       setData(jsonBody);
     };
@@ -21,8 +23,6 @@ function Main(): JSX.Element {
   const tvShowData = [...data];
   const filteredTvShowData = isSearchTerminEpOrSum(tvShowData, searchTerm);
   const showsList = [...tvShows];
-  
-
 
   const sortedShowsList = showsList.sort((a, b) =>
     a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1
@@ -31,9 +31,12 @@ function Main(): JSX.Element {
   return (
     <>
       <div className="Main">
-        <select className = "dropDownList" onChange= {(e) => setID(parseInt(e.target.value))}>
+        <select
+          className="dropDownList"
+          onChange={(e) => setID(parseInt(e.target.value))}
+        >
           {sortedShowsList.map((obj, id) => (
-            <option className="dropDownListItem" value={obj.id} key={id} >
+            <option className="dropDownListItem" value={obj.id} key={id}>
               {obj.name}
             </option>
           ))}
