@@ -1,6 +1,6 @@
 import { episodeCode } from "./episodeCode";
 
-test("episodeCode returns an episodecode from ", () => {
+test("episodeCode returns an episodecode from", () => {
   expect(
     episodeCode({
       id: 4952,

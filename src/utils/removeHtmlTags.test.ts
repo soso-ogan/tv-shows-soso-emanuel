@@ -1,6 +1,6 @@
 import { removeHtmlTags } from "./removeHtmlTags";
 
-test("removeHtmlTags removes html tags from a string ", () => {
+test("removeHtmlTags removes html tags from a string", () => {
   expect(
     removeHtmlTags({
       id: 4952,

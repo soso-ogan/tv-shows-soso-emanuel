@@ -1,6 +1,6 @@
 import { isSearchTerminEpOrSum } from "./isSearchTerminEpOrSum";
 
-test("isSearchTerminEpOrSum returns an array with objects which match the searchterm ", () => {
+test("isSearchTerminEpOrSum returns an array with objects which match the searchterm", () => {
   expect(
     isSearchTerminEpOrSum(
       [
