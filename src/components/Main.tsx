@@ -65,7 +65,10 @@ function Main(): JSX.Element {
                 <img className="image" src={obj.image.medium} alt="" />
               )}
               {obj.image === null && <i>Image Unavailable</i>}
-              <p className="summary">{removeHtmlTags(obj)}</p>
+              {obj.summary && (
+                <p className="summary">{removeHtmlTags(obj)}</p>
+              )}
+              {obj.summary === null && <i>Summary Unavailable</i>}
             </div>
           ))}
         </div>
