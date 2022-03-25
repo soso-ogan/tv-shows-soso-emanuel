@@ -60,7 +60,6 @@ function Main(): JSX.Element {
                   {episodeCode(obj)}
                 </h3>
               </div>
-
               {obj.image && (
                 <img className="image" src={obj.image.medium} alt="" />
               )}

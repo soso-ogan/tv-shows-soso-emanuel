@@ -13,6 +13,6 @@ export interface IEpisode {
     medium: string;
     original: string;
   };
-  summary: string;
+  summary: null|string;
   _links: { self: { href: string } };
 }
