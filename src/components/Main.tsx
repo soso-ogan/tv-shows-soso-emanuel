@@ -6,20 +6,24 @@ import { removeHtmlTags } from "../utils/removeHtmlTags";
 import React, { useEffect, useState } from "react";
 
 function Main(): JSX.Element {
+  const [id, setID] = useState(496);
   useEffect(() => {
     const fetchEpisodeList = async () => {
-      const response = await fetch("https://api.tvmaze.com/shows/82/episodes");
+      const response = await fetch(`https://api.tvmaze.com/shows/` + `${id}` + `/episodes`);
       const jsonBody: IEpisode[] = await response.json();
       setData(jsonBody);
     };
     fetchEpisodeList();
-  }, []);
+  }, [id]);
 
   const [data, setData] = useState<IEpisode[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const tvShowData = [...data];
   const filteredTvShowData = isSearchTerminEpOrSum(tvShowData, searchTerm);
   const showsList = [...tvShows];
+  
+
+
   const sortedShowsList = showsList.sort((a, b) =>
     a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1
   );
@@ -27,14 +31,14 @@ function Main(): JSX.Element {
   return (
     <>
       <div className="Main">
-        <select>
+        <select className = "dropDownList" onChange= {(e) => setID(parseInt(e.target.value))}>
           {sortedShowsList.map((obj, id) => (
-            <option className="dropDownListItem" value={obj.id} key={id}>
+            <option className="dropDownListItem" value={obj.id} key={id} >
               {obj.name}
             </option>
           ))}
         </select>
-        <div id="searchBar">
+        <div className="searchBar">
           <input
             placeholder="Type your search"
             value={searchTerm}
